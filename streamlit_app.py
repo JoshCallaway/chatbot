@@ -158,6 +158,11 @@ if atrm_val is not None:
         if col in final_input:
             final_input[col] = 1
 
+# Add +1 increment for these numeric inputs before creating DataFrame
+final_input['AInjAge'] = final_input.get('AInjAge', 0) + 1
+final_input['AASATotD'] = final_input.get('AASATotD', 0) + 1
+
+
 # Convert to DataFrame
 input_df = pd.DataFrame([final_input])
 
@@ -169,7 +174,7 @@ if st.button("Predict"):
     pred_class = int(pred_prob >= 0.5135)       # optimal threshold for LR (max Youden's J)
 
     st.subheader("Prediction Results")
-    st.write(f"**Predicted Probability of Employment:** {pred_prob:.3f}")
+    st.write(f"**Predicted Employment Score:** {pred_prob:.3f}")
     st.write(f"**Predicted Class:** {'Employed' if pred_class == 1 else 'Unemployed'}")
 
 # Add disclaimer and links here (outside the if block, so always shown)
