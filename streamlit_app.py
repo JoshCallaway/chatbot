@@ -81,7 +81,7 @@ for var in original_variables:
         user_input[var] = selected_code
     else:
         # numeric input
-        user_input[var] = st.number_input(label, value=0.0)
+        user_input[var] = st.number_input(label, value=0, step=1, format="%d")
 
 # Now build the final input DataFrame with all one-hot features set
 # Start with zeros for all features your model expects
@@ -157,10 +157,6 @@ if atrm_val is not None:
         col = f'ATrmEtio_grouped_{atrm_val}'
         if col in final_input:
             final_input[col] = 1
-
-# Add +1 increment for these numeric inputs before creating DataFrame
-final_input['AInjAge'] = final_input.get('AInjAge', 0) + 1
-final_input['AASATotD'] = final_input.get('AASATotD', 0) + 1
 
 
 # Convert to DataFrame
