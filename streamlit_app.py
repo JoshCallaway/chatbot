@@ -31,9 +31,11 @@ name_change = {
 
 # Group original variables before one-hot encoding
 original_variables = [
-    'AInjAge', 'ASex', 'ARace', 'AHispnic', 'AMarStIj', 'AASAImDs', 'ANCatDis', 'APNFDisL', 'ANurLvlD',
-    'AASATotD', 'ASLDisRt', 'ASLDisLf', 'AMLDisRt', 'AMLDisLf',
-    'APResDis_grouped', 'ABdMMDis_grouped', 'AJobCnCd_grouped', 'ATrmEtio_grouped'
+    'AInjAge', 'ASex', 'ARace', 'AHispnic', 'AMarStIj',
+    'APResDis_grouped', 'ABdMMDis_grouped', 'AJobCnCd_grouped', 'ATrmEtio_grouped',
+    'AASAImDs', 'ANCatDis',
+    'APNFDisL', 'ANurLvlD',
+    'AASATotD', 'ASLDisRt', 'ASLDisLf', 'AMLDisRt', 'AMLDisLf'
 ]
 
 # Map original variable name to one-hot encoded features that your model uses
