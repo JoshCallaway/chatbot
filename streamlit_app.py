@@ -177,7 +177,7 @@ if st.button("Predict"):
 st.markdown(
     """
     ---
-    Developed by [Josh Callaway](https://www.linkedin.com/in/joshcallaway) | 
-    Research Profile: [ResearchGate](https://www.researchgate.net/profile/Joshua_Callaway)
+    Developed by [Josh Callaway](https://www.https://www.linkedin.com/in/josh-callaway-a79661226/) | 
+    Research Profile: [ResearchGate](https://www.researchgate.net/profile/Josh-Callaway-2?ev=hdr_xprf)
     """
 )
