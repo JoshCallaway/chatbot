@@ -46,7 +46,17 @@ one_hot_features_map = {
 }
 
 st.title("Return to Work Prediction After Cervicothoracic Spinal Cord Injury")
-st.write("Input patient and injury characteristics to estimate the likelihood of returning to employment one year post-injury.")
+st.markdown(
+    """
+    <p style="font-size:16px; font-weight:normal;">
+    This tool provides a <b>clinical support estimate</b> of the likelihood of returning to employment one year post-injury based on patient and injury characteristics.
+    It is intended to aid clinicians in rehabilitation planning and is not a substitute for professional judgment or diagnosis.
+    </p>
+    """, 
+    unsafe_allow_html=True
+)
+
+st.markdown("### Input patient and injury characteristics below:")
 
 user_input = {}
 
@@ -161,10 +171,6 @@ if st.button("Predict"):
     st.write(f"**Predicted Class:** {'Employed' if pred_class == 1 else 'Unemployed'}")
 
 # Add disclaimer and links here (outside the if block, so always shown)
-st.write(
-    "This tool provides a clinical support estimate of the likelihood of returning to employment one year post-injury based on patient and injury characteristics. "
-    "It is intended to aid clinicians in rehabilitation planning and is not a substitute for professional judgment or diagnosis."
-)
 
 st.markdown(
     """
