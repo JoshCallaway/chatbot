@@ -18,7 +18,7 @@ name_change = {
     'ANCatDis': ['Category of Neurological Impairment', (1, 'Normal Neurologic'), (2, 'Normal Neurologic, Minimal Neurologic Deficit'), (4, 'Paraplegia, incomplete'), (5, 'Paraplegia, complete'), (3, 'Paraplegia, minimal deficit'), (7, 'Tetraplegia, incomplete'), (8, 'Tetraplegia, complete'), (6, 'Tetraplegia, minimal deficit')],
     'APNFDisL': ['Level of Preserved Neurologic Function at Discharge', (0, 'C01'), (1, 'C02'), (2, 'C03'), (3, 'C04'), (4, 'C05'), (5, 'C06'), (6, 'C07'), (7, 'C08'), (8, 'Cervical, Unknown Level'), (9, 'T01'), (10, 'T02'), (11, 'T03'), (12, 'T04'), (13, 'T05'), (14, 'T06'), (15, 'T07'), (16, 'T08'), (17, 'T09'), (18, 'T10'), (19, 'T11'), (20, 'T12'), (21, 'Thoracic, Unknown Level'), (22, 'L01'), (23, 'L02'), (24, 'L03'), (25, 'L04'), (26, 'L05'), (27, 'Lumbar, Unknown Level'), (28, 'S01'), (29, 'S02'), (30, 'S03'), (31, 'S04'), (32, 'S05'), (33, 'Sacral, Unknown Level'), (34, 'Normal neurologic (INT)')],
     'ANurLvlD': ['Neurologic Level of Injury at Discharge', (0, 'C01'), (1, 'C02'), (2, 'C03'), (3, 'C04'), (4, 'C05'), (5, 'C06'), (6, 'C07'), (7, 'C08'), (8, 'Cervical, Unknown Level'), (9, 'T01'), (10, 'T02'), (11, 'T03'), (12, 'T04'), (13, 'T05'), (14, 'T06'), (15, 'T07'), (16, 'T08'), (17, 'T09'), (18, 'T10'), (19, 'T11'), (20, 'T12'), (21, 'Thoracic, Unknown Level'), (22, 'L01'), (23, 'L02'), (24, 'L03'), (25, 'L04'), (26, 'L05'), (27, 'Lumbar, Unknown Level'), (28, 'S01'), (29, 'S02'), (30, 'S03'), (31, 'S04'), (32, 'S05'), (33, 'Sacral, Unknown Level'), (34, 'Normal neurologic (INT)')],
-    'AASATotD': ['ASIA Motor Index'],
+    'AASATotD': ['ASIA Motor Index Score'],
     'ASLDisRt': ['Sensory Level at Discharge, Right', (0, 'C01'), (1, 'C02'), (2, 'C03'), (3, 'C04'), (4, 'C05'), (5, 'C06'), (6, 'C07'), (7, 'C08'), (8, 'Cervical, Unknown Level'), (9, 'T01'), (10, 'T02'), (11, 'T03'), (12, 'T04'), (13, 'T05'), (14, 'T06'), (15, 'T07'), (16, 'T08'), (17, 'T09'), (18, 'T10'), (19, 'T11'), (20, 'T12'), (21, 'Thoracic, Unknown Level'), (22, 'L01'), (23, 'L02'), (24, 'L03'), (25, 'L04'), (26, 'L05'), (27, 'Lumbar, Unknown Level'), (28, 'S01'), (29, 'S02'), (30, 'S03'), (31, 'S04'), (32, 'S05'), (33, 'Sacral, Unknown Level'), (34, 'Normal neurologic (INT)')],
     'ASLDisLf': ['Sensory Level at Discharge, Left', (0, 'C01'), (1, 'C02'), (2, 'C03'), (3, 'C04'), (4, 'C05'), (5, 'C06'), (6, 'C07'), (7, 'C08'), (8, 'Cervical, Unknown Level'), (9, 'T01'), (10, 'T02'), (11, 'T03'), (12, 'T04'), (13, 'T05'), (14, 'T06'), (15, 'T07'), (16, 'T08'), (17, 'T09'), (18, 'T10'), (19, 'T11'), (20, 'T12'), (21, 'Thoracic, Unknown Level'), (22, 'L01'), (23, 'L02'), (24, 'L03'), (25, 'L04'), (26, 'L05'), (27, 'Lumbar, Unknown Level'), (28, 'S01'), (29, 'S02'), (30, 'S03'), (31, 'S04'), (32, 'S05'), (33, 'Sacral, Unknown Level'), (34, 'Normal neurologic (INT)')],
     'AMLDisRt': ['Motor Level at Discharge, Right', (0, 'C01'), (1, 'C02'), (2, 'C03'), (3, 'C04'), (4, 'C05'), (5, 'C06'), (6, 'C07'), (7, 'C08'), (8, 'Cervical, Unknown Level'), (9, 'T01'), (10, 'T02'), (11, 'T03'), (12, 'T04'), (13, 'T05'), (14, 'T06'), (15, 'T07'), (16, 'T08'), (17, 'T09'), (18, 'T10'), (19, 'T11'), (20, 'T12'), (21, 'Thoracic, Unknown Level'), (22, 'L01'), (23, 'L02'), (24, 'L03'), (25, 'L04'), (26, 'L05'), (27, 'Lumbar, Unknown Level'), (28, 'S01'), (29, 'S02'), (30, 'S03'), (31, 'S04'), (32, 'S05'), (33, 'Sacral, Unknown Level'), (34, 'Normal neurologic (INT)')],
@@ -178,7 +178,22 @@ if st.button("Predict"):
 st.markdown(
     """
     ---
-    Developed by [Josh Callaway](https://www.https://www.linkedin.com/in/josh-callaway-a79661226/) | 
-    Research Profile: [ResearchGate](https://www.researchgate.net/profile/Josh-Callaway-2?ev=hdr_xprf)
+    Based on data provided by the **National Spinal Cord Injury Statistical Center (NSCISC)**  
+    
+    Developed by Josh Callaway in collaboration with the *Spine Research Group* at **UC Davis Medical Center**, led by Dr. Hai Le  
+
+    **Josh Callaway:** [LinkedIn](https://www.linkedin.com/in/josh-callaway-a79661226/) | Research Profile: [ResearchGate](https://www.researchgate.net/profile/Josh-Callaway-2?ev=hdr_xprf)  
+    **Dr. Hai Le:** [LinkedIn](https://www.https://www.linkedin.com/in/hai-le-866b76b0/) | Research Profile: [ResearchGate](https://www.researchgate.net/profile/Hai-Le-42/research)  
     """
 )
+
+# st.markdown(
+#     """
+#     <hr>
+#     <p style="font-size:10px; color:gray; text-align:center;">
+#     Last updated: 8/11/2025
+#     </p>
+#     """,
+#     unsafe_allow_html=True
+# )
+
