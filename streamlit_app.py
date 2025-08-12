@@ -59,29 +59,65 @@ st.markdown(
 )
 
 st.markdown("### Input patient and injury characteristics below:")
+st.write(
+    "<span style='font-size:12px; color:gray;'>⚠️ Please enter consistent clinical data. For example, ASIA impairment grade and ASIA  motor index score should match logically. Mismatched inputs may affect prediction reliability. </span>", 
+    unsafe_allow_html=True
+)
 
 user_input = {}
+default_values = {
+    'AInjAge': 45,  # mid-age adult
+    'ASex': 'Female',
+    'ARace': 'Black',
+    'AHispnic': 'Hispanic or Latin Origin',
+    'AMarStIj': 'Widowed',
+    'AASAImDs': 'ASIA B / Frankel Grade B',
+    'ANCatDis': 'Tetraplegia, incomplete',
+    'APNFDisL': 'C05',
+    'ANurLvlD': 'C05',
+    'AASATotD': 10,  # numeric default for motor index
+    'ASLDisRt': 'C05',
+    'ASLDisLf': 'C05',
+    'AMLDisRt': 'C05',
+    'AMLDisLf': 'C05',
+    'APResDis_grouped': 'Institutional',
+    'ABdMMDis_grouped': 'Indwelling',
+    'AJobCnCd_grouped': 'Service/Manual',
+    'ATrmEtio_grouped': 'Violence'
+}
 
 for var in original_variables:
     label = name_change[var][0]
     options = name_change[var][1:]  # list of tuples
-    
+
     if len(options) > 0:
-        # dropdown input for categorical variables
         display_options = [opt[1] for opt in options]
-        selected_display = st.selectbox(label, display_options)
-        
-        # Save the code or label value (for grouped vars the code is a string)
+
+        # Get the default label for this variable
+        default_label = default_values.get(var)
+
+        # If default label is None or not found in options, select first option (index=0)
+        if default_label is not None and default_label in display_options:
+            default_index = display_options.index(default_label)
+        else:
+            default_index = 0
+
+        selected_display = st.selectbox(label, display_options, index=default_index)
+
+        # Map selected display back to code
         selected_code = None
         for code, name in options:
             if name == selected_display:
                 selected_code = code
                 break
-        
+
         user_input[var] = selected_code
+
     else:
-        # numeric input
-        user_input[var] = st.number_input(label, value=0, step=1, format="%d")
+        # For numeric inputs, get default value if exists, else 0
+        default_num = default_values.get(var, 0)
+        user_input[var] = st.number_input(label, value=default_num, step=1, format="%d")
+
 
 # Now build the final input DataFrame with all one-hot features set
 # Start with zeros for all features your model expects
