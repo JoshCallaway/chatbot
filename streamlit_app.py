@@ -10,7 +10,7 @@ model = joblib.load("c_t_lr_model.joblib")  # replace with actual filename
 # Mapping of original variables and their dropdown options (labels + choices)
 name_change = {
     'AInjAge': ['Age at Injury'], 
-    'ASex': ['Sex', (1, 'Male'), (2, 'Female'), (3, 'Other, Transgender')], 
+    'ASex': ['Sex', (1, 'Male'), (2, 'Female')], 
     'ARace': ['Race', (1, 'White'), (2, 'Black'), (3, 'American Indian'), (4, 'Asian'), (5, 'Other Race/Multiracial')],
     'AHispnic': ['Hispanic Origin', (0, 'Not of Hispanic Origin'), (1, 'Hispanic or Latin Origin'), (7, 'Declined/Does Not Know')],
     'AMarStIj': ['Marital Status', (1, 'Never Married (Single)'), (2, 'Married'), (3, 'Divorced'), (4, 'Seperated'), (5, 'Widowed'), (6, 'Other, unclassified'), (7, 'Living with Significant Other, Partner, Unmarried Couple')], 
