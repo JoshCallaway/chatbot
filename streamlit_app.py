@@ -187,6 +187,30 @@ st.markdown(
     """
 )
 
+st.markdown(
+    """
+    <hr>
+    <p style="font-size:10px; color:gray; text-align:center;">
+    &copy; 2025 Josh Callaway. All rights reserved.  
+
+    </p>
+    """,
+    unsafe_allow_html=True
+)
+
+# # Better Copyright link (for future use)
+# st.markdown(
+#     """
+#     <hr>
+#     <p style="font-size:10px; color:gray; text-align:center;">
+#     &copy; 2025 Josh Callaway. All rights reserved.  
+#     Visit <a href="https://www.yourwebsite.com" target="_blank" style="color:gray; text-decoration:none;">yourwebsite.com</a>
+#     </p>
+#     """,
+#     unsafe_allow_html=True
+# )
+
+
 # st.markdown(
 #     """
 #     <hr>
