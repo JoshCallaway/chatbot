@@ -183,7 +183,7 @@ st.markdown(
     Developed by Josh Callaway in collaboration with the *Spine Research Group* at **UC Davis Medical Center**, led by Dr. Hai Le  
 
     **Josh Callaway:** [LinkedIn](https://www.linkedin.com/in/josh-callaway-a79661226/) | Research Profile: [ResearchGate](https://www.researchgate.net/profile/Josh-Callaway-2?ev=hdr_xprf)  
-    **Dr. Hai Le:** [LinkedIn](https://www.https://www.linkedin.com/in/hai-le-866b76b0/) | Research Profile: [ResearchGate](https://www.researchgate.net/profile/Hai-Le-42/research)  
+    **Dr. Hai Le:** [LinkedIn](https://www.linkedin.com/in/hai-le-866b76b0/) | Research Profile: [ResearchGate](https://www.researchgate.net/profile/Hai-Le-42/research)  
     """
 )
 
