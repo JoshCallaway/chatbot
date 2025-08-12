@@ -170,7 +170,7 @@ if st.button("Predict"):
     pred_class = int(pred_prob >= 0.5135)       # optimal threshold for LR (max Youden's J)
 
     st.subheader("Prediction Results")
-    st.write(f"**Prognostic Score:** {pred_prob:.3f}")
+    st.write(f"**Estimated Percent Change of Return to Work 1 Year After Injury:** {pred_prob * 100:.1f}%")
     st.write(f"**Predicted Class:** {'Employed' if pred_class == 1 else 'Unemployed'}")
 
 # Add disclaimer and links here (outside the if block, so always shown)
