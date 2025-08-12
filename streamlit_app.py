@@ -191,7 +191,7 @@ st.markdown(
     """
     <hr>
     <p style="font-size:10px; color:gray; text-align:center;">
-    &copy; 2025 Josh Callaway. All rights reserved.  
+    &copy; 2025 Josh Callaway, in collaboration with UC Davis Medical Center. All rights reserved.  
 
     </p>
     """,
