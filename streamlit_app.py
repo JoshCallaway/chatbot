@@ -5,7 +5,7 @@ import numpy as np
 import statsmodels.api as sm
 
 # --- Load your trained logistic regression model ---
-model = joblib.load("c_t_lr_model.joblib")  # replace with actual filename
+model = joblib.load("c_t_lr_model .joblib")  # replace with actual filename
 
 # Mapping of original variables and their dropdown options (labels + choices)
 name_change = {
