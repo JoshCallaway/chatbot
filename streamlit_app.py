@@ -48,21 +48,28 @@ one_hot_features_map = {
 }
 
 st.title("Return to Work Prediction After Cervicothoracic Spinal Cord Injury")
+# Beta / Testing Badge
+st.markdown(
+    "<span style='color: red; font-weight: bold;'>⚠️ BETA VERSION – Predictions are for research purposes only. ⚠️</span>",
+    # "<span style='color: red; font-weight: bold;'> ⚠️ BETA VERSION – Predictions are for research purposes only. Not for clinical decision-making. ⚠️</span>",
+    unsafe_allow_html=True
+)
 st.markdown(
     """
     <p style="font-size:16px; font-weight:normal;">
     This tool provides a <b>clinical support estimate</b> of the likelihood of returning to employment one year post-injury based on patient and injury characteristics.
     It is intended to aid clinicians in rehabilitation planning and is not a substitute for professional judgment or diagnosis.
-    </p>
+    </p> 
     """, 
     unsafe_allow_html=True
 )
 
-st.markdown("### Input patient and injury characteristics below:")
 st.write(
-    "<span style='font-size:12px; color:gray;'>⚠️ Please enter consistent clinical data. For example, ASIA impairment grade and ASIA  motor index score should match logically. Mismatched inputs may affect prediction reliability. </span>", 
+    "<span style='font-size:12px; color:gray;'>Please enter consistent clinical data. For example, ASIA impairment grade and ASIA  motor index score should match logically. Mismatched inputs may affect prediction reliability. </span>", 
     unsafe_allow_html=True
 )
+st.markdown("### Input patient and injury characteristics below:")
+
 
 user_input = {}
 default_values = {
@@ -83,7 +90,7 @@ default_values = {
     'APResDis_grouped': 'Institutional',
     'ABdMMDis_grouped': 'Indwelling',
     'AJobCnCd_grouped': 'Service/Manual',
-    'ATrmEtio_grouped': 'Violence'
+    'ATrmEtio_grouped': 'Motor vehicle'
 }
 
 for var in original_variables:
@@ -201,13 +208,26 @@ input_df = pd.DataFrame([final_input])
 # Your existing predict button and output
 if st.button("Predict"):
     input_df_with_const = sm.add_constant(input_df, has_constant='add')  # add intercept column
-    pred_prob = model.predict(input_df_with_const)[0]  # predicted probability
-    pred_prob = 1 - pred_prob
-    pred_class = int(pred_prob >= 0.5135)       # optimal threshold for LR (max Youden's J)
+
+    # Get prediction with confidence intervals
+    pred_res = model.get_prediction(input_df_with_const)
+    summary = pred_res.summary_frame(alpha=0.05)  # 95% CI by default
+    # st.write("Summary columns:", summary.columns.tolist())
+    # st.write(summary.head())
+
+    # Use "mean", not "predicted_mean"
+    pred_prob = 1 - summary["predicted"].iloc[0]
+
+    lower_ci = 1 - summary["ci_upper"].iloc[0]      # flip b/c reverse of nonreturn predict
+    upper_ci = 1 - summary["ci_lower"].iloc[0]      # flip b/c reverse of nonreturn predict
+
+    pred_class = int(pred_prob >= 0.5135)  # thresholding
 
     st.subheader("Prediction Results")
-    st.write(f"**Estimated Percent Change of Return to Work 1 Year After Injury:** {pred_prob * 100:.1f}%")
-    st.write(f"**Predicted Class:** {'Employed' if pred_class == 1 else 'Unemployed'}")
+    st.write(f"**🏷️ Predicted Class:** {'Employed' if pred_class == 1 else 'Unemployed'}")
+    st.write(f"**🧠 Predicted Outcome:** {pred_prob*100:.1f}% chance of return to work after 1 year")
+    st.write(f"**📊 Confidence Interval:** {lower_ci*100:.1f}% – {upper_ci*100:.1f}%")
+    st.write(f"**🚀 Individualized Risk Factors:** [coming soon]")
 
 # Add disclaimer and links here (outside the if block, so always shown)
 
